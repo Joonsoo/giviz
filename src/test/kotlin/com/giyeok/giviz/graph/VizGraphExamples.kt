@@ -1,0 +1,238 @@
+package com.giyeok.giviz.graph
+
+import com.giyeok.giviz.graph.layout.DotConfig
+import com.giyeok.giviz.graph.layout.DotEngine
+import com.giyeok.giviz.graph.layout.NodeGroup
+
+object VizGraphExamples {
+    fun List<VizGraph.Edge>.withEdgeIds() =
+        this.mapIndexed { index, edge -> "E$index" to edge }.toMap()
+
+    val world_dynamics = VizGraph(
+        mapOf(
+            "10" to VizGraph.Node(12, 8),
+            "11" to VizGraph.Node(12, 8),
+            "12" to VizGraph.Node(12, 8),
+            "13" to VizGraph.Node(12, 8),
+            "14" to VizGraph.Node(12, 8),
+            "15" to VizGraph.Node(12, 8),
+            "16" to VizGraph.Node(12, 8),
+            "17" to VizGraph.Node(12, 8),
+            "18" to VizGraph.Node(12, 8),
+            "19" to VizGraph.Node(12, 8),
+            "2" to VizGraph.Node(12, 8),
+            "20" to VizGraph.Node(12, 8),
+            "21" to VizGraph.Node(12, 8),
+            "22" to VizGraph.Node(12, 8),
+            "23" to VizGraph.Node(12, 8),
+            "25" to VizGraph.Node(12, 8),
+            "26" to VizGraph.Node(12, 8),
+            "27" to VizGraph.Node(12, 8),
+            "28" to VizGraph.Node(12, 8),
+            "29" to VizGraph.Node(12, 8),
+            "3" to VizGraph.Node(12, 8),
+            "31" to VizGraph.Node(12, 8),
+            "32" to VizGraph.Node(12, 8),
+            "33" to VizGraph.Node(12, 8),
+            "34" to VizGraph.Node(12, 8),
+            "36" to VizGraph.Node(12, 8),
+            "37" to VizGraph.Node(12, 8),
+            "38" to VizGraph.Node(12, 8),
+            "39" to VizGraph.Node(12, 8),
+            "4" to VizGraph.Node(12, 8),
+            "40" to VizGraph.Node(12, 8),
+            "41" to VizGraph.Node(12, 8),
+            "42" to VizGraph.Node(12, 8),
+            "43" to VizGraph.Node(12, 8),
+            "5" to VizGraph.Node(12, 8),
+            "6" to VizGraph.Node(12, 8),
+            "7" to VizGraph.Node(12, 8),
+            "9" to VizGraph.Node(12, 8),
+            "S1" to VizGraph.Node(12, 8),
+            "S24" to VizGraph.Node(12, 8),
+            "S30" to VizGraph.Node(12, 8),
+            "S35" to VizGraph.Node(12, 8),
+            "S8" to VizGraph.Node(12, 8),
+            "T1" to VizGraph.Node(12, 8),
+            "T24" to VizGraph.Node(12, 8),
+            "T30" to VizGraph.Node(12, 8),
+            "T35" to VizGraph.Node(12, 8),
+            "T8" to VizGraph.Node(12, 8)
+        ),
+        listOf(
+            VizGraph.Edge("S8", "9"),
+            VizGraph.Edge("S24", "27"),
+            VizGraph.Edge("S24", "25"),
+            VizGraph.Edge("S1", "10"),
+            VizGraph.Edge("S1", "2"),
+            VizGraph.Edge("S35", "36"),
+            VizGraph.Edge("S35", "43"),
+            VizGraph.Edge("S30", "31"),
+            VizGraph.Edge("S30", "33"),
+            VizGraph.Edge("9", "42"),
+            VizGraph.Edge("9", "T1"),
+            VizGraph.Edge("25", "T1"),
+            VizGraph.Edge("25", "26"),
+            VizGraph.Edge("27", "T24"),
+            VizGraph.Edge("2", "3"),
+            VizGraph.Edge("2", "16"),
+            VizGraph.Edge("2", "17"),
+            VizGraph.Edge("2", "T1"),
+            VizGraph.Edge("2", "18"),
+            VizGraph.Edge("10", "11"),
+            VizGraph.Edge("10", "14"),
+            VizGraph.Edge("10", "T1"),
+            VizGraph.Edge("10", "13"),
+            VizGraph.Edge("10", "12"),
+            VizGraph.Edge("31", "T1"),
+            VizGraph.Edge("31", "32"),
+            VizGraph.Edge("33", "T30"),
+            VizGraph.Edge("33", "34"),
+            VizGraph.Edge("42", "4"),
+            VizGraph.Edge("26", "4"),
+            VizGraph.Edge("3", "4"),
+            VizGraph.Edge("16", "15"),
+            VizGraph.Edge("17", "19"),
+            VizGraph.Edge("18", "29"),
+            VizGraph.Edge("11", "4"),
+            VizGraph.Edge("14", "15"),
+            VizGraph.Edge("37", "39"),
+            VizGraph.Edge("37", "41"),
+            VizGraph.Edge("37", "38"),
+            VizGraph.Edge("37", "40"),
+            VizGraph.Edge("13", "19"),
+            VizGraph.Edge("12", "29"),
+            VizGraph.Edge("43", "38"),
+            VizGraph.Edge("43", "40"),
+            VizGraph.Edge("36", "19"),
+            VizGraph.Edge("32", "23"),
+            VizGraph.Edge("34", "29"),
+            VizGraph.Edge("39", "15"),
+            VizGraph.Edge("41", "29"),
+            VizGraph.Edge("38", "4"),
+            VizGraph.Edge("40", "19"),
+            VizGraph.Edge("4", "5"),
+            VizGraph.Edge("19", "21"),
+            VizGraph.Edge("19", "20"),
+            VizGraph.Edge("19", "28"),
+            VizGraph.Edge("5", "6"),
+            VizGraph.Edge("5", "T35"),
+            VizGraph.Edge("5", "23"),
+            VizGraph.Edge("21", "22"),
+            VizGraph.Edge("20", "15"),
+            VizGraph.Edge("28", "29"),
+            VizGraph.Edge("6", "7"),
+            VizGraph.Edge("15", "T1"),
+            VizGraph.Edge("22", "23"),
+            VizGraph.Edge("22", "T35"),
+            VizGraph.Edge("29", "T30"),
+            VizGraph.Edge("7", "T8"),
+            VizGraph.Edge("23", "T24"),
+            VizGraph.Edge("23", "T1")
+        ).withEdgeIds()
+    )
+
+    val shells = Pair(
+        VizGraph(
+            mapOf(
+                "1972" to VizGraph.Node(12, 8),
+                "1976" to VizGraph.Node(12, 8),
+                "1978" to VizGraph.Node(12, 8),
+                "1980" to VizGraph.Node(12, 8),
+                "1982" to VizGraph.Node(12, 8),
+                "1984" to VizGraph.Node(12, 8),
+                "1986" to VizGraph.Node(12, 8),
+                "1988" to VizGraph.Node(12, 8),
+                "1990" to VizGraph.Node(12, 8),
+                "future" to VizGraph.Node(12, 8),
+
+                "Thompson" to VizGraph.Node(12, 8),
+                "Bourne" to VizGraph.Node(12, 8),
+                "Mashey" to VizGraph.Node(12, 8),
+                "Formshell" to VizGraph.Node(12, 8),
+                "csh" to VizGraph.Node(12, 8),
+                "esh" to VizGraph.Node(12, 8),
+                "vsh" to VizGraph.Node(12, 8),
+                "ksh" to VizGraph.Node(12, 8),
+                "System-V" to VizGraph.Node(12, 8),
+                "v9sh" to VizGraph.Node(12, 8),
+                "tcsh" to VizGraph.Node(12, 8),
+                "ksh-i" to VizGraph.Node(12, 8),
+                "rc" to VizGraph.Node(12, 8),
+                "KornShell" to VizGraph.Node(12, 8),
+                "Perl" to VizGraph.Node(12, 8),
+                "Bash" to VizGraph.Node(12, 8),
+                "tcl" to VizGraph.Node(12, 8),
+                "ksh-POSIX" to VizGraph.Node(12, 8),
+                "POSIX" to VizGraph.Node(12, 8)
+            ),
+            listOf(
+                VizGraph.Edge("1972", "1976"),
+                VizGraph.Edge("1976", "1978"),
+                VizGraph.Edge("1978", "1980"),
+                VizGraph.Edge("1980", "1982"),
+                VizGraph.Edge("1982", "1984"),
+                VizGraph.Edge("1984", "1986"),
+                VizGraph.Edge("1986", "1988"),
+                VizGraph.Edge("1988", "1990"),
+                VizGraph.Edge("1990", "future"),
+
+                VizGraph.Edge("Thompson", "Mashey"),
+                VizGraph.Edge("Thompson", "Bourne"),
+                VizGraph.Edge("Thompson", "csh"),
+                VizGraph.Edge("csh", "tcsh"),
+
+                VizGraph.Edge("Bourne", "ksh"),
+                VizGraph.Edge("Bourne", "esh"),
+                VizGraph.Edge("Bourne", "vsh"),
+                VizGraph.Edge("Bourne", "System-V"),
+                VizGraph.Edge("Bourne", "v9sh"),
+                VizGraph.Edge("v9sh", "rc"),
+
+                VizGraph.Edge("Bourne", "Bash"),
+                VizGraph.Edge("ksh-i", "Bash"),
+                VizGraph.Edge("KornShell", "Bash"),
+
+                VizGraph.Edge("esh", "ksh"),
+                VizGraph.Edge("vsh", "ksh"),
+                VizGraph.Edge("Formshell", "ksh"),
+                VizGraph.Edge("csh", "ksh"),
+
+                VizGraph.Edge("KornShell", "POSIX"),
+                VizGraph.Edge("System-V", "POSIX"),
+
+                VizGraph.Edge("ksh", "ksh-i"),
+                VizGraph.Edge("ksh-i", "KornShell"),
+                VizGraph.Edge("KornShell", "ksh-POSIX"),
+
+                VizGraph.Edge("Bourne", "Formshell"),
+
+                // invisible edges to adjust node placement
+                VizGraph.Edge("1984", "v9sh"),
+                VizGraph.Edge("v9sh", "tcsh"),
+                VizGraph.Edge("1988", "rc"),
+                VizGraph.Edge("rc", "KornShell"),
+                VizGraph.Edge("Formshell", "csh"),
+                VizGraph.Edge("KornShell", "Perl")
+            ).withEdgeIds()
+        ), DotConfig(
+            6, 4, NodeGroup.empty, NodeGroup.empty,
+            listOf(
+                NodeGroup("1976", "Mashey", "Bourne"),
+                NodeGroup("1978", "Formshell", "csh"),
+                NodeGroup("1980", "esh", "vsh"),
+                NodeGroup("1982", "ksh", "System-V"),
+                NodeGroup("1984", "v9sh", "tcsh"),
+                NodeGroup("1986", "ksh-i"),
+                NodeGroup("1988", "KornShell", "Perm", "rc"),
+                NodeGroup("1990", "tcl", "Bash"),
+                NodeGroup("future", "POSIX", "ksh-POSIX")
+            ),
+            mapOf()
+        )
+    )
+}
+
+fun main() {
+    DotEngine(VizGraphExamples.world_dynamics, DotConfig.default)
+}
